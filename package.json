@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node app/build/index.js",
     "dev": "nodemon app/index.ts",
-    "build": "tsc -p app/"
+    "build": "tsc -p ."
   },
   "keywords": [],
   "author": "Padelis Theodosiou <padelis.theodosiou@gmail.com>",

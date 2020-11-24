@@ -1,11 +1,14 @@
 import express, { Application, Request, Response, NextFunction } from "express";
+import { config } from "./utils/config";
 
-const app = express();
+const app: Application = express();
 
 app.get("/", (request: Request, response: Response, next: NextFunction) => {
   response.json({ message: "Hello, World!" });
 });
 
-app.listen(8080, () =>
-  console.log("Server is up and running on http://localhost:8080")
-);
+app.listen(config.port, () => {
+  console.log(
+    `Server is up and running on http://${config.host}:${config.port}`
+  );
+});
