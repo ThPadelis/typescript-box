@@ -7,10 +7,12 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app/build/index.js",
+    "dev": "nodemon app/index.ts",
+    "build": "tsc -p app/"
   },
   "keywords": [],
-  "author": "",
+  "author": "Padelis Theodosiou <padelis.theodosiou@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
