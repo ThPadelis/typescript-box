@@ -4,7 +4,7 @@ const { combine, timestamp, printf } = format;
 
 const formatter = printf(({ level, message, timestamp }) => {
   if (typeof message === "object" && message !== null)
-    return `${timestamp} [${level}]: ${JSON.stringify(message, null, 2)}\n`;
+    return `${timestamp} [${level}]: ${JSON.stringify(message, null, 2)}`;
   else return `${timestamp} [${level}]: ${message}`;
 });
 

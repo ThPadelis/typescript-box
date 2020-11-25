@@ -22,13 +22,17 @@ const configurations = {
     web3_provider_host:
       process.env.PRODUCTION_WEB3_PROVIDER_HOST || "http://127.0.0.1",
     web3_provider_port: process.env.PRODUCTION_WEB3_PROVIDER_PORT || 8545,
-    database_connection_string: "",
+    database_connection_string:
+      process.env.PRODUCTION_DATABASE_STRING ||
+      "mongodb://localhost:27017/typescript-box",
   },
   development: {
     web3_provider_host:
       process.env.DEVELOPMENT_WEB3_PROVIDER_HOST || "http://127.0.0.1",
     web3_provider_port: process.env.DEVELOPMENT_WEB3_PROVIDER_PORT || 8545,
-    database_connection_string: "",
+    database_connection_string:
+      process.env.DEVELOPMENT_DATABASE_STRING ||
+      "mongodb://localhost:27017/typescript-box",
   },
   test: {},
 };
