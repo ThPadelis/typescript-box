@@ -3,6 +3,8 @@ import { config } from "./utils/config";
 
 const app: Application = express();
 
+app.use(express.json());
+
 app.get("/", (request: Request, response: Response, next: NextFunction) => {
   response.json({ message: "Hello, World!" });
 });

@@ -22,11 +22,13 @@ const configurations = {
     web3_provider_host:
       process.env.PRODUCTION_WEB3_PROVIDER_HOST || "http://127.0.0.1",
     web3_provider_port: process.env.PRODUCTION_WEB3_PROVIDER_PORT || 8545,
+    database_connection_string: "",
   },
   development: {
     web3_provider_host:
       process.env.DEVELOPMENT_WEB3_PROVIDER_HOST || "http://127.0.0.1",
     web3_provider_port: process.env.DEVELOPMENT_WEB3_PROVIDER_PORT || 8545,
+    database_connection_string: "",
   },
   test: {},
 };
@@ -34,5 +36,7 @@ const configurations = {
 export const config = Object.assign(
   configurations.base,
   { logging: configurations.logging },
-  { env: configurations.base.env }
+  env === "development"
+    ? { ...configurations.development }
+    : { ...configurations.production }
 );
