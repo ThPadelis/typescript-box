@@ -5,6 +5,7 @@ const dbOptions: ConnectionOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: true,
+  useCreateIndex: true,
 };
 
 export const dbConnection = async () => {

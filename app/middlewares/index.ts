@@ -1,4 +1,10 @@
-import express, { Application, json } from "express";
+import express, {
+  Application,
+  json,
+  Request,
+  Response,
+  NextFunction,
+} from "express";
 import { BaseRoutes } from "../routes";
 
 export class MiddlewaresBase {
@@ -9,6 +15,17 @@ export class MiddlewaresBase {
 
     // Routes
     app.use(new BaseRoutes().routes);
+    // Error handler
+    app.use(
+      (
+        error: Error,
+        request: Request,
+        response: Response,
+        next: NextFunction
+      ) => {
+        return response.status(400).json(error);
+      }
+    );
 
     return app;
   }

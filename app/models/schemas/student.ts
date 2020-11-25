@@ -15,17 +15,16 @@ class StudentSchemaClass {
       email: {
         type: String,
         required: true,
+        unique: true,
       },
       registrationNumber: {
         type: Number,
         required: true,
+        unique: true,
       },
     });
     return schema;
   }
 }
 
-export const StudentSchema = model<IStudent>(
-  "Students",
-  StudentSchemaClass.schema
-);
+export const Student = model<IStudent>("Students", StudentSchemaClass.schema);
