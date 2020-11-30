@@ -6,12 +6,14 @@ import express, {
   NextFunction,
 } from "express";
 import { BaseRoutes } from "../routes";
+import cors from "cors";
 
 export class MiddlewaresBase {
   static get configuration() {
     const app: Application = express();
 
     app.use(json());
+    app.use(cors());
 
     // Routes
     app.use(new BaseRoutes().routes);

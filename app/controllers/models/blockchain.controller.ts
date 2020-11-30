@@ -36,10 +36,10 @@ export class BlockchainController {
 
   async transfer(request: Request, response: Response, next: NextFunction) {
     try {
-      const { sender = "", recipient = "", amount = "" } = request.body;
+      const { sender = "", receiver = "", amount = "" } = request.body;
       const receipt = await transfer({
         sender,
-        receiver: recipient,
+        receiver,
         amount,
       });
       response.status(200).json(receipt);

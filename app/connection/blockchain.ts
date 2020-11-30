@@ -1,6 +1,7 @@
 const contract = require("@truffle/contract");
 import web3 from "./web3";
 import metaCoinArtifact from "../build/contracts/MetaCoin.json";
+import logger from "../utils/logger";
 
 const MetaCoin = contract(metaCoinArtifact);
 MetaCoin.setProvider(web3.currentProvider);
@@ -11,11 +12,11 @@ const getAccounts = async () => {
       .getAccounts()
       .then((accounts) => {
         if (!accounts || accounts.length === 0)
-          reject({ error: {}, message: "Unable to get accounts" });
+          reject({ message: "Unable to get accounts" });
         resolve({ accounts });
       })
       .catch((error) => {
-        reject({ error, message: "Unable to get accounts" });
+        reject({ error: error.message, message: "Unable to get accounts" });
       });
   });
 };
@@ -32,7 +33,11 @@ const getBalance = (account: string) => {
       const ether = Math.round((Number(amount) + Number.EPSILON) * 100) / 100;
       resolve({ balance: ether });
     } catch (error) {
-      reject(error);
+      logger.error(error);
+      reject({
+        error: error.message,
+        message: "Unable to get balance of the account",
+      });
     }
   });
 };
@@ -55,7 +60,8 @@ const transfer = ({
       });
       resolve(receipt);
     } catch (error) {
-      reject({ error, message: "Unable to transfer coins" });
+      logger.error(error.message);
+      reject({ error: error.message, message: "Unable to transfer coins" });
     }
   });
 };
