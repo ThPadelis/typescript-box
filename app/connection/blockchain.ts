@@ -1,7 +1,6 @@
 const contract = require("@truffle/contract");
 import web3 from "./web3";
 import metaCoinArtifact from "../build/contracts/MetaCoin.json";
-import { resolve } from "path";
 
 const MetaCoin = contract(metaCoinArtifact);
 MetaCoin.setProvider(web3.currentProvider);
@@ -50,7 +49,7 @@ const transfer = ({
   return new Promise(async (resolve, reject) => {
     try {
       const instance = await MetaCoin.deployed();
-      const wei = await web3.utils.toWei(amount, "ether");
+      const wei = web3.utils.toWei(amount, "ether");
       const receipt = await instance.sendCoin(receiver, wei, {
         from: sender,
       });
