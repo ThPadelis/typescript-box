@@ -23,7 +23,9 @@ export class MiddlewaresBase {
         response: Response,
         next: NextFunction
       ) => {
-        return response.status(400).json(error);
+        // console.log(error);
+
+        return response.status(400).json({ error });
       }
     );
 
