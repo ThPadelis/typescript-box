@@ -33,7 +33,7 @@ const getBalance = (account: string) => {
       const ether = Math.round((Number(amount) + Number.EPSILON) * 100) / 100;
       resolve({ balance: ether });
     } catch (error) {
-      logger.error(error);
+      logger.error(error.message);
       reject({
         error: error.message,
         message: "Unable to get balance of the account",
@@ -58,7 +58,7 @@ const transfer = ({
       const receipt = await instance.sendCoin(receiver, wei, {
         from: sender,
       });
-      resolve(receipt);
+      resolve({ receipt });
     } catch (error) {
       logger.error(error.message);
       reject({ error: error.message, message: "Unable to transfer coins" });
@@ -72,7 +72,11 @@ const getReceipt = (hash: string) => {
       const receipt = await web3.eth.getTransactionReceipt(hash);
       resolve({ receipt });
     } catch (error) {
-      reject({ error, message: "Unable to get transaction receipt" });
+      logger.info(error.message);
+      reject({
+        error: error.message,
+        message: "Unable to get transaction receipt",
+      });
     }
   });
 };
