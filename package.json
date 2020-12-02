@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node app/build/index.js",
     "dev": "nodemon app/index.ts",
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "migrate": "truffle migrate --compile-all --reset"
   },
   "keywords": [],
   "author": "Padelis Theodosiou <padelis.theodosiou@gmail.com>",

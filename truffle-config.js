@@ -34,6 +34,10 @@ module.exports = {
    *
    * $ truffle test --network <network-name>
    */
+  version: "0.0.1",
+  description: "",
+  authors: ["Padelis Theodosiou <paelis.theodosiou@gmail.com>"],
+  keywords: ["ethereum", "typescript-box"],
 
   contracts_build_directory: "./app/build/contracts",
 
